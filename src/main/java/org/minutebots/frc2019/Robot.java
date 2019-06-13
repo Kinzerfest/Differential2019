@@ -1,22 +1,24 @@
 package org.minutebots.frc2019;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Robot extends TimedRobot {
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
+
+  private Joystick joystick = new Joystick(0);
+  private RoombaMotor left = new RoombaMotor("leftMotor");
+  private RoombaMotor right = new RoombaMotor("rightMotor");
+  private DifferentialDrive driveTrain;
+
   @Override
   public void robotInit() {
-  }
-
-  @Override
-  public void autonomousInit() {
-  }
-
-  @Override
-  public void autonomousPeriodic() {
+    right.setInverted(true);
+    driveTrain = new DifferentialDrive(left, right);
   }
 
   @Override
@@ -25,6 +27,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    driveTrain.arcadeDrive(-joystick.getY(), joystick.getX());
   }
 
   @Override
