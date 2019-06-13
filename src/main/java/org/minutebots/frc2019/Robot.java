@@ -1,5 +1,6 @@
 package org.minutebots.frc2019;
 
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -27,7 +28,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    driveTrain.arcadeDrive(-joystick.getY(), joystick.getX());
+    driveTrain.curvatureDrive(-joystick.getY(), joystick.getX(), joystick.getTrigger());
   }
 
   @Override
